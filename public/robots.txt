@@ -1,0 +1,40 @@
+User-agent: *
+Allow: /
+
+# Explicit allow rules for AI crawlers — content is intended to be cited/
+# referenced by AI search surfaces. Default-Allow already permits this; the
+# explicit rules signal intent unambiguously.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://jwtdecode.app/sitemap.xml

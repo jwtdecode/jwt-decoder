@@ -1,0 +1,27 @@
+# Production stack for jwtdecode.app on jwtdecode-svr1 (multi-site box).
+# Host nginx terminates TLS on :80/:443 and proxies HTTP to this container.
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    image: jwtdecode-app:latest
+    container_name: jwtdecode
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      # Override the HTTPS config baked into the image — host nginx owns TLS now
+      - ./nginx/conf.d/jwtdecode-internal.conf:/etc/nginx/conf.d/jwtdecode.conf:ro
+    networks:
+      - web
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  web:
+    driver: bridge

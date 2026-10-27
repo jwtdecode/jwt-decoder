@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Fonts ──────────────────────────────────────────────────────────────────
+   Self-hosted Latin subsets from @fontsource-variable. font-display: optional
+   (with the Inter file preloaded by prerender.mjs) so a late font never swaps
+   in and reflows already-painted text (CLS). */
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 100 900;
+  src: url('../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 100 900;
+  src: url('../node_modules/@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'JetBrains Mono Variable';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 100 800;
+  src: url('../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono Variable';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 100 800;
+  src: url('../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+
+/* ─── Theme variables ────────────────────────────────────────────────────── */
+:root {
+  /* Light mode (default) */
+  --surface:          #f1f5f9;
+  --surface-card:     #ffffff;
+  --surface-card-alt: #f8fafc;
+  --surface-bar:      #f1f5f9;
+  --surface-subtle:   #e8edf4;
+  --border-faint:     #e8edf4;
+  --border-subtle:    #d1dae6;
+  --border-default:   #b8c6d8;
+  --border-strong:    #94a3b8;
+  --scrollbar-thumb:  #cbd5e1;
+  --scrollbar-hover:  #94a3b8;
+}
+
+.dark {
+  --surface:          #080a0e;
+  --surface-card:     #0d0f16;
+  --surface-card-alt: #0f1117;
+  --surface-bar:      #111420;
+  --surface-subtle:   #0a0c12;
+  --border-faint:     #13151e;
+  --border-subtle:    #1a1c28;
+  --border-default:   #1f2333;
+  --border-strong:    #252834;
+  --scrollbar-thumb:  #2a2f44;
+  --scrollbar-hover:  #3d4460;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--surface);
+    color: #0f172a;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .dark body {
+    color: #e2e8f0;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-hover); }
+
+  ::selection {
+    background: rgba(99, 102, 241, 0.35);
+  }
+}
+
+@layer components {
+  pre, code, .font-mono {
+    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace;
+  }
+  body {
+    font-family: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* ─── JSON Syntax Highlighting ───────────────────────────────────────────── */
+.dark .jk  { color: #fb923c; }
+.dark .js  { color: #a5d6ff; }
+.dark .jb  { color: #79c0ff; }
+.dark .jn  { color: #8b949e; }
+.dark .ji  { color: #d2a8ff; }
+
+.jk  { color: #c2410c; }
+.js  { color: #0369a1; }
+.jb  { color: #1d4ed8; }
+.jn  { color: #64748b; }
+.ji  { color: #7c3aed; }
+
+/* ─── Focus ring ─────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.6);
+  outline-offset: 2px;
+}
+
+/* ─── Textarea ───────────────────────────────────────────────────────────── */
+textarea {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+/* ─── Glassmorphism card ─────────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Long inline identifiers and URLs in article prose (e.g. dotted .NET/Java
+   names) must wrap instead of widening the page on mobile. */
+.prose-article code {
+  overflow-wrap: anywhere;
+}

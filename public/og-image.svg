@@ -1,0 +1,41 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#080a0e"/>
+  <rect x="80" y="80" width="1040" height="470" rx="20" fill="#0f1117" stroke="#252834" stroke-width="1"/>
+  <rect x="120" y="130" width="56" height="56" rx="14" fill="#1e1b4b" stroke="#4338ca" stroke-opacity="0.5" stroke-width="1"/>
+  <text x="148" y="168" font-family="monospace" font-size="28" text-anchor="middle" fill="#818cf8">&#128274;</text>
+  <text x="196" y="162" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#f1f5f9">JWT Decode</text>
+  <text x="196" y="185" font-family="Arial, sans-serif" font-size="16" fill="#475569">Free Online JWT Decoder and Inspector</text>
+  <line x1="120" y1="212" x2="1080" y2="212" stroke="#1e2333" stroke-width="1"/>
+  <rect x="120" y="230" width="960" height="50" rx="8" fill="#0a0c12" stroke="#1f2333" stroke-width="1"/>
+  <text x="136" y="261" font-family="monospace" font-size="13" fill="#fb923c">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</text>
+  <text x="586" y="261" font-family="monospace" font-size="13" fill="#3d4460">.</text>
+  <text x="598" y="261" font-family="monospace" font-size="13" fill="#a78bfa">eyJzdWIiOiJ1c2VyXzEyMyJ9</text>
+  <text x="852" y="261" font-family="monospace" font-size="13" fill="#3d4460">.</text>
+  <text x="864" y="261" font-family="monospace" font-size="13" fill="#34d399">SflKxwRJS...</text>
+  <rect x="120" y="308" width="295" height="150" rx="10" fill="#0a0c12" stroke="#fb923c" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="140" y="332" font-family="monospace" font-size="11" font-weight="600" fill="#fb923c">HEADER</text>
+  <text x="140" y="355" font-family="monospace" font-size="12" fill="#64748b">{</text>
+  <text x="152" y="373" font-family="monospace" font-size="12" fill="#fb923c">"alg": </text>
+  <text x="218" y="373" font-family="monospace" font-size="12" fill="#a5d6ff">"HS256",</text>
+  <text x="152" y="391" font-family="monospace" font-size="12" fill="#fb923c">"typ": </text>
+  <text x="218" y="391" font-family="monospace" font-size="12" fill="#a5d6ff">"JWT"</text>
+  <text x="140" y="409" font-family="monospace" font-size="12" fill="#64748b">}</text>
+  <rect x="443" y="308" width="314" height="150" rx="10" fill="#0a0c12" stroke="#a78bfa" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="463" y="332" font-family="monospace" font-size="11" font-weight="600" fill="#a78bfa">PAYLOAD</text>
+  <text x="463" y="355" font-family="monospace" font-size="12" fill="#64748b">{</text>
+  <text x="475" y="373" font-family="monospace" font-size="12" fill="#fb923c">"sub": </text>
+  <text x="537" y="373" font-family="monospace" font-size="12" fill="#a5d6ff">"user_123",</text>
+  <text x="475" y="391" font-family="monospace" font-size="12" fill="#fb923c">"exp": </text>
+  <text x="537" y="391" font-family="monospace" font-size="12" fill="#d2a8ff">1716480961</text>
+  <text x="463" y="409" font-family="monospace" font-size="12" fill="#64748b">}</text>
+  <rect x="785" y="308" width="295" height="150" rx="10" fill="#0a0c12" stroke="#34d399" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="805" y="332" font-family="monospace" font-size="11" font-weight="600" fill="#34d399">SIGNATURE</text>
+  <text x="805" y="358" font-family="monospace" font-size="11" fill="#34d399" fill-opacity="0.6">HMACSHA256(</text>
+  <text x="817" y="376" font-family="monospace" font-size="11" fill="#34d399" fill-opacity="0.4">  base64url(header)</text>
+  <text x="817" y="394" font-family="monospace" font-size="11" fill="#34d399" fill-opacity="0.4">  + base64url(payload),</text>
+  <text x="817" y="412" font-family="monospace" font-size="11" fill="#34d399" fill-opacity="0.4">  secret</text>
+  <text x="805" y="430" font-family="monospace" font-size="11" fill="#34d399" fill-opacity="0.6">)</text>
+  <rect x="120" y="490" width="200" height="28" rx="14" fill="#064e3b" fill-opacity="0.5" stroke="#059669" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="140" y="509" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#34d399">100% Local - No Server</text>
+  <text x="1080" y="508" font-family="Arial, sans-serif" font-size="14" fill="#334155" text-anchor="end">jwtdecode.app</text>
+</svg>

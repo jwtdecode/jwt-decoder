@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Prevent flash of wrong theme: apply saved theme before React loads -->
+    <script>try{var t=localStorage.getItem('theme');if(t==='dark'||(t!=='light'&&!(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches)))document.documentElement.classList.add('dark')}catch(e){document.documentElement.classList.add('dark')}</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ═══ Site-wide meta (page-specific tags injected by SSR/Helmet) ═══════ -->
+    <meta name="robots"          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot"       content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta name="author"          content="Andy" />
+    <meta name="theme-color"     content="#080a0e" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color"     content="#f1f5f9" media="(prefers-color-scheme: light)" />
+    <meta name="application-name" content="JWT Decode" />
+    <meta name="rating"          content="general" />
+    <meta property="og:locale"      content="en_US" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt"   content="JWT Decode — free online JWT decoder and verifier" />
+    <meta name="twitter:image"       content="https://jwtdecode.app/og-image.png" />
+    <!-- Favicons + PWA -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonts (Inter + JetBrains Mono) are self-hosted from @fontsource-variable;
+         @font-face rules live in src/index.css. -->
+
+    <!-- ═══ Google AdSense ════════════════════════════════════════════════════ -->
+    <!-- Keeps AdSense site-ownership verifiable now the script is injected at runtime -->
+    <meta name="google-adsense-account" content="ca-pub-4118883919421728" />
+    <!-- Loaded after the page's load event (when idle) so ad script work doesn't
+         compete with first paint / hydration. Ad units queue into
+         window.adsbygoogle until the script arrives. -->
+    <script>
+      window.addEventListener('load', function () {
+        var go = function () {
+          var s = document.createElement('script');
+          s.async = true;
+          s.crossOrigin = 'anonymous';
+          s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4118883919421728';
+          document.head.appendChild(s);
+        };
+        if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 3000 }); else setTimeout(go, 1500);
+      });
+    </script>
+
+    <!-- ═══ JSON-LD: Organization + WebSite (site-wide identity) ════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://jwtdecode.app/#organization",
+      "name": "JWT Decode",
+      "url": "https://jwtdecode.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://jwtdecode.app/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "email": "hello@jwtdecode.app",
+      "founder": { "@id": "https://jwtdecode.app/about#andy" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://jwtdecode.app/#website",
+      "name": "JWT Decode",
+      "alternateName": "JWT Decoder",
+      "url": "https://jwtdecode.app/",
+      "description": "Free online JWT decoder and verifier. Decode any JSON Web Token instantly — 100% local, your token never leaves your browser.",
+      "inLanguage": "en-US",
+      "publisher": { "@id": "https://jwtdecode.app/#organization" }
+    }
+    </script>
+
+    <!-- ═══ JSON-LD: WebApplication (site-wide) ═════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "@id": "https://jwtdecode.app/#app",
+      "name": "JWT Decode",
+      "alternateName": ["JWT Decoder", "JSON Web Token Decoder", "JWT Inspector", "JWT Verifier", "Online JWT Decoder"],
+      "url": "https://jwtdecode.app/",
+      "description": "Free online JWT decoder and verifier. Decode any JSON Web Token instantly — view header, payload, and all claims. Verify HS256, RS256, ES256, PS256 signatures using the browser's Web Crypto API. Your token never leaves your device.",
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Security Tool",
+      "operatingSystem": "Any — runs in any modern web browser",
+      "browserRequirements": "Requires a modern browser with JavaScript and Web Crypto API support",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/OnlineOnly"
+      },
+      "screenshot": "https://jwtdecode.app/og-image.png",
+      "publisher": { "@id": "https://jwtdecode.app/#organization" }
+    }
+    </script>
+
+    <!-- ═══ Google tag (gtag.js) ═════════════════════════════════════════════ -->
+    <!-- Calls queue in dataLayer immediately; the library itself is fetched after
+         the load event (when idle) so it doesn't compete with first paint. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5KHGG9LNHZ');
+      window.addEventListener('load', function () {
+        var go = function () {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-5KHGG9LNHZ';
+          document.head.appendChild(s);
+        };
+        if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 3000 }); else setTimeout(go, 1500);
+      });
+    </script>
+
+    <!--app-head-->
+  </head>
+  <body>
+    <div id="root"><!--app-html--></div>
+    <script type="module" src="/src/entry-client.tsx"></script>
+  </body>
+</html>

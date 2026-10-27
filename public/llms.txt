@@ -1,0 +1,124 @@
+# JWT Decode (jwtdecode.app)
+
+> Free, independent JWT decoder, inspector and signature verifier. Decoding and verification run entirely in the browser via the Web Crypto API; tokens and keys are never sent to a server. No account, no API.
+
+## The tool
+
+- Decoder: https://jwtdecode.app/ - paste a JWT; header and payload decode instantly.
+- Claims view: descriptions of iss, sub, aud, exp, nbf, iat, jti; absolute and relative timestamps; status badge (active, expired, not yet valid, no expiry).
+- Tools on guide pages: in-browser JWT secret key generator (/jwt-secret-key-generator) and Unix timestamp converter (/jwt-expiration-time).
+- Signature verification: HS256/384/512 (shared secret), RS256/384/512 and PS256/384/512 (PEM SPKI public key), ES256/384/512 (EC PEM public key).
+- How it works (architecture and privacy model): https://jwtdecode.app/how-it-works
+- About (who maintains the site and how guides are checked): https://jwtdecode.app/about
+- Not supported: generating or signing tokens, decrypting JWE, JWK/X.509 key input, remote JWKS fetching, any API.
+
+## All guides
+
+Index page: https://jwtdecode.app/guides
+
+### Fundamentals
+
+- [What is a JWT?](https://jwtdecode.app/what-is-a-jwt): The complete introduction to JSON Web Tokens - what they are, how they work, and when to use them.
+- [Header, Payload & Signature](https://jwtdecode.app/jwt-header-payload-signature-explained): Deep dive into each of the three JWT segments, including Base64url encoding and what each field means.
+- [JWT Claims Explained](https://jwtdecode.app/jwt-claims-explained): A complete reference for all seven standard registered claims - iss, sub, aud, exp, nbf, iat, jti - with practical guidance.
+- [Verification Guide](https://jwtdecode.app/jwt-verification-guide): How JWT signature verification works, including HMAC vs asymmetric algorithms, JWKS, and what verification actually proves.
+- [Decoder vs Validator](https://jwtdecode.app/jwt-decoder-vs-jwt-validator): Understand the critical difference between decoding, verification, claim validation, and full authorization enforcement.
+- [JWTs in OAuth 2.0 & OIDC](https://jwtdecode.app/jwt-in-oauth2-and-openid-connect): How JWTs function within OAuth 2.0 and OpenID Connect - ID tokens, access tokens, JWKS, discovery, and major provider token shapes.
+- [Decode a JWT Without a Server](https://jwtdecode.app/decode-jwt-without-a-server): How to decode and verify a JWT entirely in your browser via the Web Crypto API - no upload, no telemetry. The privacy-first way to inspect production tokens.
+
+### Debugging & Code
+
+- [Common JWT Errors & Fixes](https://jwtdecode.app/common-jwt-errors-and-fixes): Fix malformed tokens, invalid signatures, expired tokens, wrong audience/issuer errors, and clock skew issues.
+- [Decode & Verify JWT in Code](https://jwtdecode.app/how-to-decode-jwt-in-javascript-python-go): Working code examples for decoding and verifying JWTs in JavaScript, Python, and Go - from raw Base64url to production-ready verification.
+- [How to Debug a JWT](https://jwtdecode.app/how-to-debug-a-jwt): A step-by-step routine for 401 and 403 errors: capture the real token, check alg, kid, exp, iss and aud, then verify the signature.
+
+### Algorithms
+
+- [HS256 vs RS256](https://jwtdecode.app/hs256-vs-rs256): When to use a shared secret vs a public/private key pair, and how the choice affects your security architecture.
+- [ES256 Explained](https://jwtdecode.app/es256-explained): ECDSA with P-256 and SHA-256 - the modern asymmetric JWT algorithm. Signature format, key sizes, and why it beats RS256 for greenfield systems.
+- [PS256 vs RS256](https://jwtdecode.app/ps256-vs-rs256): RSA-PSS padding versus PKCS#1 v1.5 - same key pair, different security properties. Migration guidance and the algorithm-confusion pitfall both share.
+- [The "none" Algorithm Vulnerability](https://jwtdecode.app/none-algorithm-vulnerability): The 2015 JWT none-algorithm attack: how libraries shipped vulnerable defaults, the confusion variant that followed, and the universal defence every verifier must apply.
+
+### Concepts & Claims
+
+- [What Is JWKS?](https://jwtdecode.app/what-is-jwks): JSON Web Key Sets explained: JWK fields, jwks_uri discovery, caching, rotation, JWK-to-PEM and verification code.
+- [JWT Scopes vs Roles](https://jwtdecode.app/jwt-scopes-vs-roles): Scopes vs roles in JWTs: the scope and scp claims, roles and permissions claims by provider, naming conventions and RBAC design.
+- [The JWT kid Header](https://jwtdecode.app/jwt-kid-header): What the kid key ID means, why it is a header not a claim, value formats, JWKS lookup, key rotation and kid injection defences.
+- [JWT Expiration Time](https://jwtdecode.app/jwt-expiration-time): The exp, iat and nbf claims, seconds vs milliseconds, expiresIn units by library, OAuth expires_in, lifetimes, plus a timestamp converter.
+- [JWT aud Claim](https://jwtdecode.app/jwt-audience-claim): What the audience claim means, string vs array values, aud vs sub, iss and azp, audience validation in code and fixing invalid audience.
+
+### Keys & Tooling
+
+- [JWT Size Limit](https://jwtdecode.app/jwt-size-limit): No size limit in RFC 7519, but nginx, Apache, Node.js, AWS and cookies impose one. Calculate token size and shrink it.
+- [JWT Secret Key Generator](https://jwtdecode.app/jwt-secret-key-generator): Generate a random HS256, HS384 or HS512 secret in your browser, and learn the RFC 7518 minimum size and CLI commands.
+- [JWT With curl and Postman](https://jwtdecode.app/jwt-curl-postman): Send a JWT bearer token with curl or --oauth2-bearer, set up Postman Bearer Token and JWT Bearer auth, and fix 401s.
+- [Generate JWT Signing Keys With OpenSSL](https://jwtdecode.app/generate-jwt-signing-keys-openssl): OpenSSL commands for RS256, ES256 and Ed25519 key pairs, PKCS#1 vs PKCS#8 conversion, and a Node.js sign-and-verify test.
+- [Decode JWT From the Command Line](https://jwtdecode.app/decode-jwt-command-line): Tested bash, jq, PowerShell and Python one-liners that handle base64url padding, plus the jwt-cli and step CLI tools.
+
+### Comparisons
+
+- [JWT vs Session Tokens](https://jwtdecode.app/jwt-vs-session-tokens): How to choose between stateless JWTs and server-side sessions - revocation, scaling, storage, and the hybrid approach.
+- [jwt.io Alternative](https://jwtdecode.app/jwt-io-alternative): A factual comparison of jwtdecode.app and jwt.io: what is the same, what differs, and when each is the better tool.
+- [JWT vs SAML](https://jwtdecode.app/jwt-vs-saml): SAML XML assertions versus JWT and OpenID Connect ID tokens for single sign-on: format, signatures, flows and where each is used.
+- [JWT vs OAuth](https://jwtdecode.app/jwt-vs-oauth): Why OAuth is an authorisation framework and JWT a token format, plus JWT vs opaque access tokens and introspection.
+- [JWT vs Bearer Token](https://jwtdecode.app/jwt-vs-bearer-token): Bearer describes how a token is used, JWT what it contains: Bearer auth, RFC 6750 errors, the JWT bearer grant and DPoP.
+- [JWT vs API Key](https://jwtdecode.app/jwt-vs-api-key): Static API keys versus short-lived signed JWTs: revocation, validation cost, security, and exchanging a key for a JWT.
+- [Is a JWT Encrypted? JWS vs JWE](https://jwtdecode.app/is-jwt-encrypted-jws-vs-jwe): Why most JWTs are signed not encrypted, how JWE's five parts and alg/enc work, and when a nested signed-then-encrypted JWT fits.
+
+### Framework Guides
+
+- [JWT Authentication in Spring Boot](https://jwtdecode.app/jwt-authentication-spring-boot): Spring Security's OAuth2 Resource Server for Boot 4 and 3: starter, issuer-uri, role mapping, NimbusJwtEncoder and jjwt.
+- [JWT Authentication in Node.js & Express](https://jwtdecode.app/jwt-authentication-nodejs-express): Sign and verify JWTs with jsonwebtoken or jose, write Express auth middleware, and validate RS256 tokens via JWKS.
+- [JWT Authentication in Next.js](https://jwtdecode.app/jwt-authentication-nextjs): App Router JWT auth with jose: HttpOnly cookies via cookies(), proxy.ts (formerly middleware.ts), route handlers and server actions.
+- [JWT Authentication in FastAPI](https://jwtdecode.app/jwt-authentication-fastapi): FastAPI JWT auth with PyJWT, Argon2 via pwdlib and OAuth2PasswordBearer, plus JWKS verification and WebSocket tokens.
+- [JWT Authentication in Django REST Framework](https://jwtdecode.app/jwt-authentication-django): Simple JWT setup for DRF: settings, token URLs, refresh rotation, blacklist logout, React clients and Django Ninja.
+- [JWT Authentication in ASP.NET Core](https://jwtdecode.app/jwt-authentication-aspnet-core): AddJwtBearer for .NET 8 to 10 Web APIs: validation parameters, roles and MapInboundClaims, dotnet user-jwts, refresh and logout.
+
+### Identity Providers
+
+- [Validate Azure Entra ID JWTs](https://jwtdecode.app/validate-azure-entra-id-jwt): Validate Azure AD / Entra ID access tokens: v1 vs v2 issuers, aud, oid vs sub, scp vs roles, JWKS discovery and APIM policies.
+- [Validate AWS Cognito JWTs](https://jwtdecode.app/validate-aws-cognito-jwt): Verify Cognito ID and access tokens: JWKS URL, issuer formats, token_use, aud vs client_id, aws-jwt-verify and API Gateway.
+
+### Security & Architecture
+
+- [Security Best Practices](https://jwtdecode.app/jwt-security-best-practices): Token lifetime, storage, audience/issuer validation, key rotation, algorithm confusion attacks, and common implementation mistakes.
+- [JWT Storage: localStorage vs Cookie](https://jwtdecode.app/jwt-storage-localstorage-vs-cookie): localStorage, sessionStorage, HttpOnly cookies, in-memory variables - the XSS and CSRF tradeoffs of each, and the hybrid pattern most modern apps end up with.
+- [Refresh Token Pattern](https://jwtdecode.app/jwt-refresh-token-pattern): Short-lived access tokens plus long-lived refresh tokens - rotation, replay detection, family revocation, and the implementation pitfalls that break the flow.
+- [WebSocket JWT Authentication](https://jwtdecode.app/jwt-websocket-authentication): Authenticating a WebSocket with a JWT when the browser can't set headers: cookies, first message, subprotocol trick and ticket exchange.
+- [JWT Logout & Revocation](https://jwtdecode.app/jwt-logout-and-revocation): How to invalidate a JWT before it expires: short access tokens, revocable refresh tokens, a Redis jti denylist and token versioning.
+- [JWT in Microservices](https://jwtdecode.app/jwt-in-microservices): Gateway vs per-service validation, token propagation vs RFC 8693 exchange, mTLS/SPIFFE, per-service audiences and JWKS caching.
+- [JWT Attacks & Vulnerabilities](https://jwtdecode.app/jwt-attacks-and-vulnerabilities): alg none, algorithm confusion, weak secrets, kid/jku injection, psychic signatures and token leakage, with a test and a fix for each.
+
+## Quick reference: decode a JWT payload without a library
+
+Decoding does not verify the signature. Never use decoded claims for authorisation without verification.
+
+JavaScript (browser or Node.js 16+):
+
+```js
+const [, payload] = token.split('.');
+const claims = JSON.parse(new TextDecoder().decode(
+  Uint8Array.from(atob(payload.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0))
+));
+```
+
+Python:
+
+```python
+import base64, json
+payload = token.split('.')[1]
+claims = json.loads(base64.urlsafe_b64decode(payload + '=' * (-len(payload) % 4)))
+```
+
+Go:
+
+```go
+parts := strings.Split(token, ".")
+raw, _ := base64.RawURLEncoding.DecodeString(parts[1])
+var claims map[string]any
+json.Unmarshal(raw, &claims)
+```
+
+## Standards
+
+- RFC 7519 (JWT), RFC 7515 (JWS), RFC 7518 (JWA), RFC 7516 (JWE), RFC 9068 (JWT access tokens)
